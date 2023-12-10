@@ -3,16 +3,19 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-    "start": "node app.js"
+        "start": "node app.js"
     },
     "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RodrigoSturm14/Railway-nodejs.git"
+        "type": "git",
+        "url": "git+https://github.com/RodrigoSturm14/Railway-nodejs.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-    "url": "https://github.com/RodrigoSturm14/Railway-nodejs/issues"
+        "url": "https://github.com/RodrigoSturm14/Railway-nodejs/issues"
     },
-    "homepage": "https://github.com/RodrigoSturm14/Railway-nodejs#readme"
+    "homepage": "https://github.com/RodrigoSturm14/Railway-nodejs#readme",
+    "dependencies": {
+        "mqtt": "^5.3.3"
+    }
 }
