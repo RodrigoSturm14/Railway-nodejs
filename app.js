@@ -42,6 +42,10 @@ client.publish(topic, payload, { qos }, (error) => {
     }
 });
 
+var message;
+
 client.on('message', (topic, payload) => {
-    console.log('Mnesaje recibido: ', topic, payload.toString());
+    message = payload.toString();
+    console.log('Mensaje recibido: ', topic, message);
 });
+
