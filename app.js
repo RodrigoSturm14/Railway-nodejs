@@ -45,7 +45,10 @@ client.publish(topic, payload, { qos }, (error) => {
 var message;
 
 client.on('message', (topic, payload) => {
-    message = payload.toString();
-    console.log('Mensaje recibido: ', topic, message);
+    message_broker = payload.toString();
+    topic_broker = topic;
+    console.log('Mensaje recibido: ', topic_broker, message_broker);
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write(`Mensaje recibido en topico ${topic_broker}: ${message_broker}`);
+    res.end();
 });
-
