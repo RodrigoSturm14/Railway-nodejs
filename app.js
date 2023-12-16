@@ -7,7 +7,7 @@ const PORT = 3000;
 const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Hello World!');
-    // res.end();
+    res.end();
 })
 //comentario
 server.listen(PORT, () => {
@@ -48,7 +48,7 @@ client.on('message', (topic, payload) => {
     message_broker = payload.toString();
     topic_broker = topic;
     console.log('Mensaje recibido: ', topic_broker, message_broker);
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write(`Mensaje recibido en topico ${topic_broker}: ${message_broker}`);
+    //res.writeHead(200, { 'Content-Type': 'text/plain' });
+    //res.write(`Mensaje recibido en topico ${topic_broker}: ${message_broker}`);
     //res.end();
 });
