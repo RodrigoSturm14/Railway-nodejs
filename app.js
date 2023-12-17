@@ -1,5 +1,5 @@
 
-window.globalMessageBroker = "";
+global.globalMessageBroker = "";
 const http = require('http');
 const PORT = 3000;
 // http.createServer() convierte la pc en un servidor http, ademas hace a 'server' un objeto 'http server'
