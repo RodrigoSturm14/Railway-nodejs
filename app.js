@@ -4,6 +4,7 @@ const PORT = 3000;
 // http.createServer() convierte la pc en un servidor http, ademas hace a 'server' un objeto 'http server'
 // sintaxis: http.createServer(requestListenerFunction), requestListenerFunction es opcional
 // pero se ejecuta cada vez q se escuche una request, permite ademas devolver una respuesta a esa request
+/*
 const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Hello World!');
@@ -13,6 +14,21 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
     console.log(`Running at port ${PORT}`);
 });
+*/
+
+const fs = require('fs');
+fs.readFile('./index.html', function (err, html) {
+    if (err) throw err;
+
+    http.createServer(function(req, res) {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.write(html);
+        res.end();
+    }).listen(PORT, () => {
+        console.log(`Running at port ${PORT}`);
+    });
+});
+
 
 const mqtt = require('mqtt');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
