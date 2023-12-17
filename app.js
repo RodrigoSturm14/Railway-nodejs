@@ -1,4 +1,5 @@
 
+window.globalMessageBroker = "";
 const http = require('http');
 const PORT = 3000;
 // http.createServer() convierte la pc en un servidor http, ademas hace a 'server' un objeto 'http server'
@@ -58,13 +59,15 @@ client.publish(topic, payload, { qos }, (error) => {
     }
 });
 
-var message;
 
+var topic_broker = "";
 client.on('message', (topic, payload) => {
-    message_broker = payload.toString();
+    globalMessageBroker = payload.toString();
     topic_broker = topic;
-    console.log('Mensaje recibido: ', topic_broker, message_broker);
-    //res.writeHead(200, { 'Content-Type': 'text/plain' });
-    //res.write(`Mensaje recibido en topico ${topic_broker}: ${message_broker}`);
-    //res.end();
+    console.log('Mensaje recibido: ', topic_broker, globalMessageBroker);
 });
+
+function refresh() {
+    var paragraph = document.getElementById('paragraph');
+    paragraph.textContent = globalMessageBroker;
+}
