@@ -29,6 +29,16 @@ fs.readFile('./index.html', function (err, html) {
     });
 });
 
+const WebSocket = require('ws');
+const wss = new WebSocket.Server( { port: '8080'} );
+
+wss.on('connection', function connection(socket) {
+    socket.on('error', console.error);
+    
+    socket.on('message', message => {
+        socket.send(`Message recieved: ${message}`)
+    });
+});
 
 const mqtt = require('mqtt');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
