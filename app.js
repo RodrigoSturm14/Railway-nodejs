@@ -1,6 +1,12 @@
 
 const http = require('http');
 const PORT = 3000;
+const express = require('express');
+const app = express();
+
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
+});
 // http.createServer() convierte la pc en un servidor http, ademas hace a 'server' un objeto 'http server'
 // sintaxis: http.createServer(requestListenerFunction), requestListenerFunction es opcional
 // pero se ejecuta cada vez q se escuche una request, permite ademas devolver una respuesta a esa request
@@ -15,19 +21,6 @@ server.listen(PORT, () => {
     console.log(`Running at port ${PORT}`);
 });
 */
-
-const fs = require('fs');
-fs.readFile('./index.html', function (err, html) {
-    if (err) throw err;
-
-    http.createServer(function(req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(html);
-        res.end();
-    }).listen(PORT, () => {
-        console.log(`Running at port ${PORT}`);
-    });
-});
 
 const WebSocket = require('ws');
 const wss = new WebSocket.Server( { port: '8080'} );
