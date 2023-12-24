@@ -9,18 +9,8 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) =>{
+    res.render();
     res.sendFile(__dirname + '/index.html');
-});
-
-const WebSocket = require('ws');
-const wss = new WebSocket.Server( { port: '8080'} );
-
-wss.on('connection', function connection(socket) {
-    socket.on('error', console.error);
-    
-    socket.on('message', message => {
-        socket.send(`Message recieved: ${message}`)
-    });
 });
 
 const mqtt = require('mqtt');
