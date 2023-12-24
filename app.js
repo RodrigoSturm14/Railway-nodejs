@@ -6,7 +6,7 @@ const socketIO = require('socket.io');
 
 const app = express();
 const httpServer = http.createServer(app);
-const io = new socketIO(httpServer);
+const io = socketIO(httpServer);
 
 io.on('connection', (socket) => {
     console.log('New user connected');
