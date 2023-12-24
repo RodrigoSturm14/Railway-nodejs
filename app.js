@@ -9,7 +9,6 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) =>{
-    res.render();
     res.sendFile(__dirname + '/index.html');
 });
 
