@@ -1,15 +1,22 @@
 
-const http = require('http');
 const PORT = 3000;
 const express = require('express');
-const app = express();
+const socketIO = require('socket.io');
 
-app.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`);
+const app = express();
+const httpServer = http.createServer(app);
+const io = new socketIO(httpServer);
+
+io.on('connection', (socket) => {
+    console.log('New user connected');
 });
 
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/views/index.html');
+});
+
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
 });
 
 const mqtt = require('mqtt');
