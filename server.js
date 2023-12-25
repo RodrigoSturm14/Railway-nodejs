@@ -11,7 +11,7 @@ const socketIO = require('socket.io')(httpServer, {
 });
 
 app.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(__dirname + '/app/index.html');
 });
 
 socketIO.on('connection', (socket) => {
