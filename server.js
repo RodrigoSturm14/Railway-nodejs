@@ -1,18 +1,20 @@
 
-const http = require('http');
-const PORT = 3000;
-const express = require('express');
-const socketIO = require('socket.io');
+const PORT = 8080;
 
+const http = require('http');
+const express = require('express');
 const app = express();
 const httpServer = http.createServer(app);
-const io = socketIO(httpServer);
+
+const socketIO = require('socket.io')(httpServer, {
+    cors: { origin: "*" }
+});
 
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/views/index.html');
 });
 
-io.on('connection', (socket) => {
+socketIO.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
       console.log('user disconnected');
