@@ -10,19 +10,11 @@ const socketIO = require('socket.io')(httpServer, {
     cors: { origin: "*" }
 });
 
-app.get('/', (req, res) =>{
-    app.use(express.static(path.resolve(__dirname, '/app')));
-});
-
 socketIO.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
       console.log('user disconnected');
     });
-});
-
-httpServer.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`);
 });
 
 // --- MQTT ---
@@ -58,4 +50,10 @@ client.on('message', (topic, payload) => {
 
     console.log('Mensaje recibido: ', topic, payload.toString());
     
+});
+
+app.use(express.static(path.resolve(__dirname, './public')));
+
+httpServer.listen(PORT, () => {
+    console.log('Running on port ${PORT}');
 });
