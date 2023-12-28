@@ -1,1 +1,1 @@
-export const socket = io('https://railway-nodejs-production-e955.up.railway.app/');
+export const socket = io('http://localhost:8080');
