@@ -55,5 +55,5 @@ client.on('message', (topic, payload) => {
 app.use(express.static(path.resolve(__dirname, './public')));
 
 httpServer.listen(PORT, () => {
-    console.log('Running on port ${PORT}');
+    console.log(`Running on port ${PORT}`);
 });
