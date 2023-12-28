@@ -4,9 +4,11 @@ const http = require('http');
 const express = require('express');
 const app = express();
 const httpServer = http.createServer(app);
+
 const socketIO = require('socket.io')(httpServer, {
-    cors: { origin: "*" }
-});
+    cors: { origin: "*" },
+    rejectUnauthorized: false
+})
 socketIO.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
