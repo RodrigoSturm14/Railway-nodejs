@@ -1,1 +1,1 @@
-const socket = io('ws://localhost:3000');
+const socket = io('https://railway-nodejs-production-e955.up.railway.app/');
