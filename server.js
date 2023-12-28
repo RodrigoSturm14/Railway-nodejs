@@ -1,6 +1,6 @@
 
 const PORT = 8080;
-
+const path = require('path');
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -11,7 +11,7 @@ const socketIO = require('socket.io')(httpServer, {
 });
 
 app.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/app/index.html');
+    app.use(express.static(path.resolve(__dirname, '/app')));
 });
 
 socketIO.on('connection', (socket) => {
