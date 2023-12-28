@@ -25,6 +25,7 @@ httpServer.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);
 });
 
+// --- MQTT ---
 const mqtt = require('mqtt');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'Rodri';
