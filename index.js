@@ -4,11 +4,10 @@ const http = require('http');
 const express = require('express');
 const app = express();
 const httpServer = http.createServer(app);
-
+// --- SocketIO ---
 const socketIO = require('socket.io')(httpServer, {
-    cors: { origin: "*" },
-    rejectUnauthorized: false
-})
+    cors: { origin: "*" }
+});
 socketIO.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
@@ -41,7 +40,9 @@ client.publish(topic, payload, { qos }, (error) => {
 });
 client.on('message', (topic, payload) => {
     console.log('Mensaje recibido: ', topic, payload.toString());
+    socketIO.emit('mensajeBroker', payload.toString());
 });
+// --- Running lines ---
 app.use(express.static(path.resolve(__dirname, './public')));
 httpServer.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);
