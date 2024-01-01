@@ -16,6 +16,10 @@
     </button>
     <script>
         const socket = io.connect();
+        // --- Recibir mensaje del broker ---
+        socket.on('mensajeBroker', (data) => {
+            document.getElementById('paragraph').innerText = `Mensaje recibido del broker: ${data}`;
+        });
     </script>
 </body>
 </html>
